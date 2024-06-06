@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Button from "./Button";
 import UserContext from "../context/UserContext";
 import { removeToken } from "../api/storage";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
@@ -37,9 +37,37 @@ const Navbar = () => {
       </div>
 
       {user && (
-        <div className="w-[75px]">
-          <Button label={"Logout"} onClick={handleLogut} />
-        </div>
+        <>
+          <div className="flex gap-3">
+            <NavLink
+              to="/"
+              className="p-4 hover:bg-gray-200 rounded-lg cursor-pointer"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/transactions"
+              className="p-4 hover:bg-gray-200 rounded-lg cursor-pointer"
+            >
+              Transactions
+            </NavLink>
+            <NavLink
+              to="/users"
+              className="p-4 hover:bg-gray-200 rounded-lg cursor-pointer"
+            >
+              Users
+            </NavLink>
+            <NavLink
+              to="/profile"
+              className="p-4 hover:bg-gray-200 rounded-lg cursor-pointer"
+            >
+              Profile
+            </NavLink>
+          </div>
+          <div className="w-[75px]">
+            <Button label={"Logout"} onClick={handleLogut} />
+          </div>
+        </>
       )}
     </div>
   );
