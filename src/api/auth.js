@@ -16,4 +16,12 @@ const register = async (userInfo) => {
   return res.data;
 };
 
-export { register };
+const login = async (userInfo) => {
+  const res = await instance.post("/mini-project/api/auth/login", userInfo);
+  if (res.data) {
+    storeToken(res.data.token);
+  }
+  return res.data;
+};
+
+export { register, login };

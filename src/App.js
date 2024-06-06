@@ -22,7 +22,6 @@ function App() {
     <UserContext.Provider value={[user, setUser]}>
       <div className="h-screen flex flex-col">
         <Navbar />
-        <p className="text-red-500 text-[30px]">{`${user}`}</p>
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/login" Component={Login} />

@@ -35,9 +35,12 @@ const Navbar = () => {
         {/* LOGO TXT */}
         <h2>My Bank</h2>
       </div>
-      <div className="w-[75px]">
-        <Button label={"Logout"} onClick={handleLogut} />
-      </div>
+
+      {user && (
+        <div className="w-[75px]">
+          <Button label={"Logout"} onClick={handleLogut} />
+        </div>
+      )}
     </div>
   );
 };

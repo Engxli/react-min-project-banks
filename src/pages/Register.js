@@ -6,10 +6,11 @@ import Button from "../components/Button";
 import { useMutation } from "@tanstack/react-query";
 import { register } from "../api/auth";
 import UserContext from "../context/UserContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext);
+  const navigate = useNavigate();
   const { mutate, isPending, error } = useMutation({
     mutationKey: ["regitser"],
     mutationFn: () => register(userInfo),
@@ -31,6 +32,10 @@ const Register = () => {
     mutate();
   };
 
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
+
   if (user) {
     return <Navigate to="/" />;
   }
@@ -47,7 +52,12 @@ const Register = () => {
           </h1>
           <p className="flex gap-2">
             if you don't have an account
-            <span className="text-blue-500 cursor-pointer">Login here</span>
+            <span
+              onClick={navigateToLogin}
+              className="text-blue-500 cursor-pointer"
+            >
+              Login here
+            </span>
           </p>
         </>
         {/* USERNAME */}
