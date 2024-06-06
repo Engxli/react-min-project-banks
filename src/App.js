@@ -1,8 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
-  return <div className="bg-red-500">hi</div>;
+  return (
+    <Routes>
+      <Route path="/" Component={Home} />
+      <Route path="/login" Component={Login} />
+    </Routes>
+  );
 }
 
 export default App;
